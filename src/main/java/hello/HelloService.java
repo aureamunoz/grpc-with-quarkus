@@ -1,7 +1,5 @@
-package greeting;
+package hello;
 
-import hello.Hello;
-import hello.HelloOuterClass;
 import io.quarkus.grpc.GrpcService;
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;

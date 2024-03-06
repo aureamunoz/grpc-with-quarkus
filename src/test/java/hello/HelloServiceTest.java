@@ -1,7 +1,5 @@
-package greeting;
+package hello;
 
-import hello.Hello;
-import hello.HelloOuterClass;
 import io.quarkus.grpc.GrpcClient;
 import io.quarkus.test.junit.QuarkusTest;
 import io.smallrye.mutiny.Uni;

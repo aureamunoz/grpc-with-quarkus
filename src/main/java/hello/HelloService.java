@@ -24,6 +24,12 @@ public class HelloService implements Hello {
         return Multi.createFrom().ticks().every(Duration.ofSeconds(1)).onItem().transform(s-> HelloReply.newBuilder().setMessage(randomString(i)).build());
     }
 
+    /**
+     * Generates a random string of a specified length.
+     *
+     * @param longitud The length of the random string to be generated.
+     * @return A randomly generated string of the specified length.
+     */
     public static String randomString(int longitud) {
 
         String lettersCollection = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
@@ -36,6 +42,14 @@ public class HelloService implements Hello {
         return result;
     }
 
+    /**
+     * Generates a random integer within the specified range [min, max].
+     *
+     * @param min The minimum value (inclusive) of the range.
+     * @param max The maximum value (inclusive) of the range.
+     * @return A random integer within the specified range [min, max].
+     * @throws IllegalArgumentException If min is greater than max.
+     */
     public static int randomNumberBetween(int min, int max) {
         return ThreadLocalRandom.current().nextInt(min, max + 1);
     }

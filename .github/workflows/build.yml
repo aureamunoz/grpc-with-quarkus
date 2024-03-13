@@ -1,4 +1,4 @@
-name: Getting Started on Quarkus Build
+name: gRPC with Quarkus Build
 
 on:
   push:

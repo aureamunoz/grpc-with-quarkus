@@ -14,20 +14,23 @@ import static hello.HelloOuterClass.*;
 public class HelloService implements Hello {
     @Override
     public Uni<HelloReply> sayHello(HelloRequest request) {
-        return Uni.createFrom().item(()->HelloReply.newBuilder().setMessage("Hello " + request.getName()).build());
+        return Uni.createFrom().item(() -> HelloReply.newBuilder().setMessage("Hello " + request.getName()).build());
     }
 
     @Override
     public Multi<HelloReply> streamHello(HelloOuterClass.Void request) {
         Random random = new Random();
         int i = random.nextInt(22);
-        return Multi.createFrom().ticks().every(Duration.ofSeconds(1)).onItem().transform(s-> HelloReply.newBuilder().setMessage(randomString(i)).build());
+        return Multi.createFrom().ticks().every(Duration.ofSeconds(1)).onItem()
+                .transform(s -> HelloReply.newBuilder().setMessage(randomString(i)).build());
     }
 
     /**
      * Generates a random string of a specified length.
      *
-     * @param longitud The length of the random string to be generated.
+     * @param longitud
+     *            The length of the random string to be generated.
+     *
      * @return A randomly generated string of the specified length.
      */
     public static String randomString(int longitud) {
@@ -45,10 +48,15 @@ public class HelloService implements Hello {
     /**
      * Generates a random integer within the specified range [min, max].
      *
-     * @param min The minimum value (inclusive) of the range.
-     * @param max The maximum value (inclusive) of the range.
+     * @param min
+     *            The minimum value (inclusive) of the range.
+     * @param max
+     *            The maximum value (inclusive) of the range.
+     *
      * @return A random integer within the specified range [min, max].
-     * @throws IllegalArgumentException If min is greater than max.
+     *
+     * @throws IllegalArgumentException
+     *             If min is greater than max.
      */
     public static int randomNumberBetween(int min, int max) {
         return ThreadLocalRandom.current().nextInt(min, max + 1);

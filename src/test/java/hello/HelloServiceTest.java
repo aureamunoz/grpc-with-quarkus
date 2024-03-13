@@ -15,8 +15,9 @@ public class HelloServiceTest {
     Hello helloService;
 
     @Test
-    public void shouldSayHello(){
-        Uni<HelloOuterClass.HelloReply> from_tests = helloService.sayHello(HelloOuterClass.HelloRequest.newBuilder().setName("from Tests").build());
+    public void shouldSayHello() {
+        Uni<HelloOuterClass.HelloReply> from_tests = helloService
+                .sayHello(HelloOuterClass.HelloRequest.newBuilder().setName("from Tests").build());
 
         HelloOuterClass.HelloReply helloReply = from_tests.await().atMost(Duration.ofSeconds(5));
         Assertions.assertEquals(helloReply.getMessage(), "Hello from Tests");
